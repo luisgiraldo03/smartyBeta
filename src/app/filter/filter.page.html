@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Filtro</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+
+  <ion-card class="card">
+    <ion-card-header>
+      <ion-card-title>
+        <h2>Cuéntanos...</h2>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="container-form">
+        <ion-item>
+          <ion-label position="stacked">¿Qué quisieras escuchar?</ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">¿Cuántas personas van contigo?</ion-label>
+          <ion-input required type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">¿Cuántas personas van contigo?</ion-label>
+          <ion-input required type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">¿Cual es tu parche hoy?</ion-label>
+          <ion-select value="cat">
+            <ion-select-option value="cat">Sólo cover</ion-select-option>
+            <ion-select-option value="dog">Consumo mínimo</ion-select-option>
+            <ion-select-option value="dog">Consumo medio</ion-select-option>
+            <ion-select-option value="dog">Consumo Alto</ion-select-option>
+            <ion-select-option value="dog">Beber hasta morir</ion-select-option>
+            <ion-select-option value="dog">Bailar</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Tu presupuesto estimado...</ion-label>
+          <ion-input required type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">¿Qué sector de la cuidad buscas?</ion-label>
+          <ion-select value="cat">
+            <ion-select-option value="cat">Norte</ion-select-option>
+            <ion-select-option value="dog">Sur</ion-select-option>
+            <ion-select-option value="dog">Este</ion-select-option>
+            <ion-select-option value="dog">Oeste</ion-select-option>
+            <ion-select-option value="dog">Beber hasta morir</ion-select-option>
+            <ion-select-option value="dog">...</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <ion-button color="warning" expand="block">Buscar...</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

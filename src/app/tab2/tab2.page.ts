@@ -15,6 +15,8 @@ interface Marker {
 })
 export class Tab2Page {
 
+  public categorias = ['Más polullares', 'Tus favoritas', 'Cerca de ti']
+
   markers: Marker[] = [
     {
       position: {

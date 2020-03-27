@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { FilterPage } from '../filter/filter.page';
 declare var google;
 
 interface Marker {
@@ -49,7 +51,7 @@ export class Tab1Page {
     },
   ];
   
-  constructor() {}
+  constructor(public navCtrl: NavController) {}
 
   ngOnInit() {
     this.loadMap();
@@ -85,5 +87,6 @@ export class Tab1Page {
       title: marker.title
     });
   }
+
 
 }
