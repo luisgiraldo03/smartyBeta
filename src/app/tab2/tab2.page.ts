@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Clasificador } from '../models/clasificador';
+import { MainService } from '../services/main.service';
+import { Popular } from '../models/popular';
 
 interface Marker {
   position: {
@@ -13,41 +16,25 @@ interface Marker {
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit{
 
   public categorias = ['Más polullares', 'Tus favoritas', 'Cerca de ti']
+  public response = "";
+  public populares: Popular[] = [];
 
-  markers: Marker[] = [
-    {
-      position: {
-        lat: 6.20888,
-        lng: -75.567779,
-      },
-      title: 'Parque Llenas'
-    },
-    {
-      position: {
-        lat: 6.279074,
-        lng: -75.588767,
-      },
-      title: 'Discoteca prueba 1'
-    },
-    {
-      position: {
-        lat: 6.200202,
-        lng: -75.578485,
-      },
-      title: 'Discoteca prueba 2'
-    },
-    {
-      position: {
-        lat: 6.232567 ,
-        lng:  -75.603868,
-      },
-      title: 'Discoteca prueba 3'
-    },
-  ];
+  constructor(public mainService: MainService) {}
 
-  constructor() {}
+  ngOnInit(){
+    this.getPopulares();
+  }
+
+  public async getPopulares(){
+    try{
+      this.populares = await this.mainService.getPopulares();
+      console.log(this.populares);
+    }catch(e){
+      console.log("No se pudo"+e);
+    }
+  }
 
 }

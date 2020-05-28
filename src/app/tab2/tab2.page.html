@@ -20,27 +20,22 @@
   <ion-grid fixed>
     <ion-row>
 
-      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let marker of markers; let i = index">
+      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let popular of populares; let i = index">
 
         <ion-card color="dark">
 
           <ion-card-header>
             <ion-card-subtitle>
               <span class="text-primary">{{i+1}} </span>
-              <span class="noticia-source-name">{{marker.title}}</span>
+              <span class="noticia-source-name">{{popular.DiscoName}}</span>
 
             </ion-card-subtitle>
             <ion-card-title>Discoteca # {{i+1}}</ion-card-title>
           </ion-card-header>
 
-          <ion-img class="animated fadeIn fast"
-            src="https://upload.wikimedia.org/wikipedia/commons/3/32/Wikipedia_space_ibiza%2803%29.jpg"></ion-img>
-
           <ion-card-content>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum laboriosam, veritatis id impedit,
-              consectetur beatae iste debitis ratione illo quod excepturi aut deleniti, perspiciatis sequi
-              reprehenderit? Mollitia labore explicabo sapiente.
+              {{popular.Description}}
             </p>
           </ion-card-content>
 
