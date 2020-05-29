@@ -23,4 +23,10 @@ export class MainService {
     });
   }
 
+  public async getFiltro(music: string, ubitacion: string): Promise<Clasificador[]> {
+    return new Promise<Clasificador[]>((resolve, reject) => {
+      this.http.get<Clasificador[]>(`${environment.rootURL}filtrar?music=${music}&ubication=${ubitacion}`).subscribe(resolve, reject);
+    });
+  }
+
 }

@@ -1,32 +1,30 @@
-import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { MainService } from '../services/main.service';
-import { Popular } from '../models/popular';
+import { Component, OnInit } from '@angular/core';
 import { Marker } from '../models/Marker';
+import { Clasificador } from '../models/clasificador';
 declare var google;
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-map-recomended',
+  templateUrl: './map-recomended.page.html',
+  styleUrls: ['./map-recomended.page.scss'],
 })
-export class Tab1Page {
+export class MapRecomendedPage implements OnInit {
 
-  public populares: Popular[] = [];
   public map = null;
   markers: Marker[] = [];
-  
-  constructor(public navCtrl: NavController, public mainService: MainService) {}
+  public discos: Clasificador[] = [];
+
+  constructor() { }
 
   ngOnInit() {
-    this.getPopulares();
+    this.discos = JSON.parse(localStorage.getItem('reco'));
     this.getMarkers();
     this.loadMap();
   }
 
+
   public async getMarkers(){
-    await this.getPopulares();
-    this.populares.forEach(element => {
+    this.discos.forEach(element => {
       this.markers.push({
         position:{
           lat: +element.Latitude,
@@ -36,15 +34,6 @@ export class Tab1Page {
       });
     });
     console.log(this.markers);
-  }
-  
-  public async getPopulares(){
-    try{
-      this.populares = await this.mainService.getPopulares();
-      console.log(this.populares);
-    }catch(e){
-      console.log("No se pudo"+e);
-    }
   }
 
   public loadMap() {
@@ -77,5 +66,6 @@ export class Tab1Page {
       title: marker.title
     });
   }
+
 
 }

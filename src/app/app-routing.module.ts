@@ -9,7 +9,15 @@ const routes: Routes = [
   {
     path: 'filter',
     loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
+  },  {
+    path: 'recomended',
+    loadChildren: () => import('./recomended/recomended.module').then( m => m.RecomendedPageModule)
+  },
+  {
+    path: 'map-recomended',
+    loadChildren: () => import('./map-recomended/map-recomended.module').then( m => m.MapRecomendedPageModule)
   }
+
 ];
 @NgModule({
   imports: [
