@@ -1,28 +1,69 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Register User</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <form>    
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" #email required></ion-input>
-    </ion-item> 
-
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" #password required></ion-input>
+<ion-content color="dark">
+  <figure class="register-figure">
+    <img src="../../assets/logo.jpg" />
+  </figure>
+  <div class="register-title">
+    <h1>Registrate!</h1>
+    <h5>Crea una cuenta y encuentra la mejor rumba para ti! 🎉</h5>
+  </div>
+  <hr />
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="signUp(registerForm.value)"
+    class="ion-text-center"
+  >
+    <div class="register-validation">
+      <ng-container *ngFor="let validation of validationMessages.email">
+        <div
+          *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)"
+        >
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item class="register-input">
+      <ion-label position="floating" autocomplete="on" background="dark"
+        >Email</ion-label
+      >
+      <ion-input formControlName="email"></ion-input>
     </ion-item>
-
-    <ion-row>
-      <ion-col> 
-      <ion-button type="submit" (click)="signUp(email, password)" expand="block">Register</ion-button>
-      </ion-col>
-    </ion-row>
+    <div class="register-validation">
+      <ng-container *ngFor="let validation of validationMessages.password">
+        <div
+          *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)"
+        >
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item class="register-input">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <ion-button
+      padding
+      fill="outline"
+      shape="round"
+      type="submit"
+      [disabled]="!registerForm.valid"
+      >Entrar</ion-button
+    >
   </form>
+  <div class="register-login" background="dark">
+    <h6>Ya tienes cuenta? Inicia sesión 👇</h6>
+    <ion-button
+      class="ion-padding"
+      color="secondary"
+      fill="outline"
+      size="small"
+      shape="round"
+      (click)="goToLogin()"
+      >Inicia sesión</ion-button
+    >
+  </div>
+  <div class="register-footer">
+    <figure>
+      <img src="../../assets/footer.png" />
+    </figure>
+  </div>
 </ion-content>

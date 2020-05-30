@@ -65,17 +65,6 @@ export class AuthenticationService {
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
 
-  // Returns true when user's email is verified
-  get isEmailVerified(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return (user.emailVerified !== false) ? true : false;
-  }
-
-  // Sign in with Gmail
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
-  }
-
   // Auth providers
   AuthLogin(provider) {
     return this.ngFireAuth.signInWithPopup(provider)
