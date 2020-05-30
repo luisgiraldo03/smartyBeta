@@ -14,16 +14,14 @@ const routes: Routes = [
     canActivate:[LoginGuard]
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    path: 'recomended',
+    loadChildren: () => import('./recomended/recomended.module').then( m => m.RecomendedPageModule),
+    canActivate:[LoginGuard]
   },
   {
-    path: 'registration',
-    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
-  },
-  {
-    path: 'verify-email',
-    loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
+    path: 'map-recomended',
+    loadChildren: () => import('./map-recomended/map-recomended.module').then( m => m.MapRecomendedPageModule),
+    canActivate:[LoginGuard]
   }
 
 ];

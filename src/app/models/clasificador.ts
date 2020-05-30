@@ -11,4 +11,7 @@ export interface Clasificador {
     Puntuation: number;
     WebSite: string;
     Tel: string;
+    Ubication: string;
+    Latitude: number;
+    Length: number;
 }

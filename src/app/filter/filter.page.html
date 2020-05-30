@@ -18,45 +18,48 @@
     <ion-card-content>
       <div class="container-form">
         <ion-item>
-          <ion-label position="stacked">¿Qué quisieras escuchar?</ion-label>
-          <ion-input required type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">¿Cuántas personas van contigo?</ion-label>
-          <ion-input required type="number"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">¿Cuántas personas van contigo?</ion-label>
-          <ion-input required type="number"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">¿Cual es tu parche hoy?</ion-label>
-          <ion-select value="cat">
-            <ion-select-option value="cat">Sólo cover</ion-select-option>
-            <ion-select-option value="dog">Consumo mínimo</ion-select-option>
-            <ion-select-option value="dog">Consumo medio</ion-select-option>
-            <ion-select-option value="dog">Consumo Alto</ion-select-option>
-            <ion-select-option value="dog">Beber hasta morir</ion-select-option>
-            <ion-select-option value="dog">Bailar</ion-select-option>
+          <ion-label position="stacked">¿Algún tipo de música?</ion-label>
+          <ion-select [(ngModel)]="musicControl">
+            <ion-select-option value="Rock">Rock</ion-select-option>
+            <ion-select-option value="Crossover">Crossover</ion-select-option>
+            <ion-select-option value="Salsa">Salsa</ion-select-option>
+            <ion-select-option value="Urbana">Urbana</ion-select-option>
+            <ion-select-option value="Vallenato">Vallenato</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Tu presupuesto estimado...</ion-label>
-          <ion-input required type="number"></ion-input>
+          <ion-label position="stacked">¿Cuánto quisieras gastar?</ion-label>
+          <ion-select [(ngModel)]="expensiveControl">
+            <ion-select-option value="$">$</ion-select-option>
+            <ion-select-option value="$$">$$</ion-select-option>
+            <ion-select-option value="$$$">$$$</ion-select-option>
+            <ion-select-option value="$$$$">$$$$</ion-select-option>
+            <ion-select-option value="$$$$$">$$$$$</ion-select-option>
+          </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">¿Qué sector de la cuidad buscas?</ion-label>
-          <ion-select value="cat">
-            <ion-select-option value="cat">Norte</ion-select-option>
-            <ion-select-option value="dog">Sur</ion-select-option>
-            <ion-select-option value="dog">Este</ion-select-option>
-            <ion-select-option value="dog">Oeste</ion-select-option>
-            <ion-select-option value="dog">Beber hasta morir</ion-select-option>
-            <ion-select-option value="dog">...</ion-select-option>
+          <ion-label position="stacked">¿Cuántas personas van contigo?</ion-label>
+          <ion-input required type="number" [(ngModel)]="numberPeopleControl"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">¿Ubicación del lugar?</ion-label>
+          <ion-select [(ngModel)]="ubicationControl">
+            <ion-select-option value="Norte">Norte</ion-select-option>
+            <ion-select-option value="Sur">Sur</ion-select-option>
+            <ion-select-option value="Oriente">Oriente</ion-select-option>
+            <ion-select-option value="Occidente">Occidente</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Prefieres...</ion-label>
+          <ion-select [(ngModel)]="preferenceControl">
+            <ion-select-option value="Bar">Bar</ion-select-option>
+            <ion-select-option value="Discoteca">Discoteca</ion-select-option>
+            <ion-select-option value="Ambas">Ambas</ion-select-option>
           </ion-select>
         </ion-item>
       </div>
-      <ion-button color="warning" expand="block">Buscar...</ion-button>
+      <ion-button color="warning" expand="block" (click)="search()">Buscar...</ion-button>
     </ion-card-content>
   </ion-card>
 
