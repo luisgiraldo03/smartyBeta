@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Marker } from '../models/Marker';
 import { Clasificador } from '../models/clasificador';
+import { Router } from '@angular/router';
 declare var google;
 
 @Component({
@@ -14,14 +15,19 @@ export class MapRecomendedPage implements OnInit {
   markers: Marker[] = [];
   public discos: Clasificador[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
-    this.discos = JSON.parse(localStorage.getItem('reco'));
-    this.getMarkers();
+  async ngOnInit() {
+    await this.getDiscos();
+    await this.getMarkers();
     this.loadMap();
+    this.router.navigate(['tabs/tab1']);
   }
 
+
+  public async getDiscos(){
+    this.discos = await JSON.parse(localStorage.getItem('reco'));
+  }
 
   public async getMarkers(){
     this.discos.forEach(element => {
@@ -36,13 +42,13 @@ export class MapRecomendedPage implements OnInit {
     console.log(this.markers);
   }
 
-  public loadMap() {
+  public async loadMap() {
     // create a new map by passing HTMLElement
     const mapEle: HTMLElement = document.getElementById('map');
     // create LatLng object
     const myLatLng = {lat:  6.244338, lng: -75.573553};
     // create map
-    this.map = new google.maps.Map(mapEle, {
+    this.map =  await new google.maps.Map(mapEle, {
       center: myLatLng,
       zoom: 12
     });

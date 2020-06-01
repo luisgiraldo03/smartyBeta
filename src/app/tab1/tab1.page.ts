@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { MainService } from '../services/main.service';
 import { Popular } from '../models/popular';
 import { Marker } from '../models/Marker';
+import { async } from '@angular/core/testing';
 declare var google;
 
 @Component({
@@ -18,9 +19,9 @@ export class Tab1Page {
   
   constructor(public navCtrl: NavController, public mainService: MainService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getPopulares();
-    this.getMarkers();
+    await this.getMarkers();
     this.loadMap();
   }
 
@@ -64,13 +65,13 @@ export class Tab1Page {
     });
   }
 
-  public renderMarkers() {
+  public async renderMarkers() {
     this.markers.forEach(marker => {
       this.addMarker(marker);
     });
   }
 
-  public addMarker(marker: Marker) {
+  public async addMarker(marker: Marker) {
     return new google.maps.Marker({
       position: marker.position,
       map: this.map,
