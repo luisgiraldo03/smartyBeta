@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { MainService } from '../services/main.service';
+import { Popular } from '../models/popular';
+import { Marker } from '../models/Marker';
+declare var google;
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +12,70 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  public populares: Popular[] = [];
+  public map = null;
+  markers: Marker[] = [];
+  
+  constructor(public navCtrl: NavController, public mainService: MainService) {}
+
+  ngOnInit() {
+    this.getPopulares();
+    this.getMarkers();
+    this.loadMap();
+  }
+
+  public async getMarkers(){
+    await this.getPopulares();
+    this.populares.forEach(element => {
+      this.markers.push({
+        position:{
+          lat: +element.Latitude,
+          lng: +element.Length
+        },
+        title: element.DiscoName
+      });
+    });
+    console.log(this.markers);
+  }
+  
+  public async getPopulares(){
+    try{
+      this.populares = await this.mainService.getPopulares();
+      console.log(this.populares);
+    }catch(e){
+      console.log("No se pudo"+e);
+    }
+  }
+
+  public loadMap() {
+    // create a new map by passing HTMLElement
+    const mapEle: HTMLElement = document.getElementById('map');
+    // create LatLng object
+    const myLatLng = {lat:  6.244338, lng: -75.573553};
+    // create map
+    this.map = new google.maps.Map(mapEle, {
+      center: myLatLng,
+      zoom: 12
+    });
+  
+    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+      this.renderMarkers();
+      mapEle.classList.add('show-map');
+    });
+  }
+
+  public renderMarkers() {
+    this.markers.forEach(marker => {
+      this.addMarker(marker);
+    });
+  }
+
+  public addMarker(marker: Marker) {
+    return new google.maps.Marker({
+      position: marker.position,
+      map: this.map,
+      title: marker.title
+    });
+  }
 
 }

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Filtro</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+
+  <ion-card class="card">
+    <ion-card-header>
+      <ion-card-title>
+        <h2>Cuéntanos...</h2>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="container-form">
+        <ion-item>
+          <ion-label position="stacked">¿Algún tipo de música?</ion-label>
+          <ion-select [(ngModel)]="musicControl">
+            <ion-select-option value="Rock">Rock</ion-select-option>
+            <ion-select-option value="Crossover">Crossover</ion-select-option>
+            <ion-select-option value="Salsa">Salsa</ion-select-option>
+            <ion-select-option value="Urbana">Urbana</ion-select-option>
+            <ion-select-option value="Vallenato">Vallenato</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">¿Cuánto quisieras gastar?</ion-label>
+          <ion-select [(ngModel)]="expensiveControl">
+            <ion-select-option value="$">$</ion-select-option>
+            <ion-select-option value="$$">$$</ion-select-option>
+            <ion-select-option value="$$$">$$$</ion-select-option>
+            <ion-select-option value="$$$$">$$$$</ion-select-option>
+            <ion-select-option value="$$$$$">$$$$$</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">¿Cuántas personas van contigo?</ion-label>
+          <ion-input required type="number" [(ngModel)]="numberPeopleControl"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">¿Ubicación del lugar?</ion-label>
+          <ion-select [(ngModel)]="ubicationControl">
+            <ion-select-option value="Norte">Norte</ion-select-option>
+            <ion-select-option value="Sur">Sur</ion-select-option>
+            <ion-select-option value="Oriente">Oriente</ion-select-option>
+            <ion-select-option value="Occidente">Occidente</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Prefieres...</ion-label>
+          <ion-select [(ngModel)]="preferenceControl">
+            <ion-select-option value="Bar">Bar</ion-select-option>
+            <ion-select-option value="Discoteca">Discoteca</ion-select-option>
+            <ion-select-option value="Ambas">Ambas</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <ion-button color="warning" expand="block" (click)="search()">Buscar...</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>
+      Tus recomendadas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="dark">
+  <ion-grid fixed>
+    <ion-row>
+
+      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let reco of recomendations; let i = index">
+
+        <ion-card color="dark">
+
+          <ion-card-header>
+            <ion-card-subtitle>
+              <span class="text-primary">{{i+1}} </span>
+              <span class="noticia-source-name">Discoteca # {{i+1}}</span>
+
+            </ion-card-subtitle>
+            <ion-card-title>{{reco.DiscoName}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>
+              {{reco.Description}}
+            </p>
+            <h2>Ubicación: {{reco.Ubication}}</h2>
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  <ion-button color="warning" expand="block" routerLink="/map-recomended">Ver en el mapa</ion-button>
+</ion-content>
