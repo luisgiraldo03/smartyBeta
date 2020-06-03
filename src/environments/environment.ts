@@ -4,8 +4,13 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
   serviceRoot:'https://desplieguesmarty.herokuapp.com/',
   rootURL: "http://127.0.0.1:5000/"
+=======
+  // rootURL: "http://127.0.0.1:5000/"
+  rootURL: "https://desplieguesmarty.herokuapp.com/"
+>>>>>>> 5081daf01c52f2f23bb4836d145febc726f538fd
 };
 
 /*

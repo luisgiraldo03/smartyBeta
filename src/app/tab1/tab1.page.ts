@@ -56,7 +56,11 @@ export class Tab1Page {
     // create map
     this.map = new google.maps.Map(mapEle, {
       center: myLatLng,
-      zoom: 12
+      zoom: 12,
+      mapTypeId: 'roadmap',
+      mapTypeControl: false,
+      fullscreenControl: false,
+      zoomControl: false
     });
   
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
